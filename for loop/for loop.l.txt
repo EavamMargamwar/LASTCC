@@ -17,7 +17,7 @@ for                 return FOR;
 ")"                 return RPAREN;
 "{"                 return LBRACE;
 "}"                 return RBRACE;
-[ \t\n]+            ;   /* ignore spaces */
+[ \t\n]+            ; 
 .                   { return yytext[0]; }
 %%
 
