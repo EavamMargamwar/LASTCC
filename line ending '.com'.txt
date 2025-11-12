@@ -28,13 +28,7 @@ int main() {
 
 int yywrap() { return 1; }
 
-Ubuntu Commands to Execute:
-lex prac6.l
-gcc lex.yy.c -o prac6
-./prac6
-
-Sample Input:
-google.com
-example.org
-hello.com
-test.net
+// Ubuntu Commands to Execute:
+// lex prac6.l
+// gcc lex.yy.c -o prac6
+// ./prac6
