@@ -5,9 +5,9 @@ int count = 0;
 %}
 
 %%
-[Aa][a-zA-Z]*     { count++; }      /* Words starting with 'A' or 'a' */
-[ \t\n]+          ;                 /* Ignore spaces and newlines */
-.                 ;                 /* Ignore other characters */
+[Aa][a-zA-Z]*     { count++; }    
+[ \t\n]+          ;                
+.                 ;                 
 %%
 
 int main() {
