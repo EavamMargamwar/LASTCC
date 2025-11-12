@@ -28,8 +28,8 @@ int flag = 1; // used for title case
                     printf("%s", yytext);
                 }
 
-[ \t\n]+        { flag = 1; printf("%s", yytext); }  // reset for next word
-.               { printf("%s", yytext); }             // print other chars
+[ \t\n]+        { flag = 1; printf("%s", yytext); }  
+.               { printf("%s", yytext); }           
 %%
 
 int main() {
