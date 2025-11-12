@@ -1,6 +1,6 @@
-infix.l (Lex)
+//infix.l (Lex)
 %{
-#include "infix.tab.h"
+#include "y.tab.h"
 #include <stdlib.h>
 %}
 
