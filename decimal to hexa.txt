@@ -22,10 +22,7 @@ int main() {
 
 int yywrap() { return 1; }
 
-Ubuntu Commands to Execute:
-lex prac5.l
-gcc lex.yy.c -o prac5
-./prac5
-
-Sample Input:
-The numbers are 10 15 255
+// Ubuntu Commands to Execute:
+// lex prac5.l
+// gcc lex.yy.c -o prac5
+// ./prac5
