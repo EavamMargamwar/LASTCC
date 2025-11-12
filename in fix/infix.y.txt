@@ -1,4 +1,4 @@
-infix.y (Yacc / Bison)
+//infix.y (Yacc / Bison)
 %{
 #include <stdio.h>
 #include <stdlib.h>
@@ -50,16 +50,16 @@ int main(void) {
     return 0;
 }
 
-Ubuntu Commands (compile & run)
-bison -d infix.y       # generates infix.tab.c and infix.tab.h (or y.tab.*)
-flex infix.l           # generates lex.yy.c
-gcc infix.tab.c lex.yy.c -o infix -lm -Wall
-./infix
+//Ubuntu Commands (compile & run)
+//bison -d infix.y       # generates infix.tab.c and infix.tab.h (or y.tab.*)
+//flex infix.l           # generates lex.yy.c
+//gcc infix.tab.c lex.yy.c -o infix -lm -Wall
+//./infix
 
 
-(If your system produces y.tab.c/h instead of infix.tab.c/h, replace names accordingly.)
+//(If your system produces y.tab.c/h instead of infix.tab.c/h, replace names accordingly.)
 
-Sample Input
-3 + 4 * (2 + 1)
--5 + 10 / 2
-(8 - 3) * (2 + 6)
+//Sample Input
+//3 + 4 * (2 + 1)
+//-5 + 10 / 2
+//(8 - 3) * (2 + 6)
