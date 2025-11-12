@@ -1,79 +1,44 @@
-Yacc Code — forloop.y
 %{
 #include <stdio.h>
 #include <stdlib.h>
+
+int yylex();
 void yyerror(const char *s);
-int yylex(void);
 %}
 
-%union {
-    char *str;
-    int num;
-}
-
-%token <str> ID
-%token <num> NUM
-%token FOR
-%token LT ASSIGN INC
-%token SEMI LPAREN RPAREN LBRACE RBRACE
+%token FOR ID NUM
+%token LPAREN RPAREN SEMICOLON
+%token LT GT ASSIGN PLUS MINUS MUL DIV
+%left PLUS MINUS
+%left MUL DIV
 
 %%
-program:
-    for_loop
-;
 
-for_loop:
-    FOR LPAREN init SEMI cond SEMI incr_opt RPAREN statement_opt
-    { printf("Valid for loop syntax\n"); }
-;
+stmt: FOR LPAREN init SEMICOLON cond SEMICOLON incr RPAREN
+       { printf("Valid FOR loop syntax\n"); }
+     ;
+init: ID ASSIGN expr
+    ;
+cond: expr relop expr
+    ;
+incr: ID ASSIGN expr
+    ;
+expr: ID
+    | NUM
+    | expr PLUS expr
+    | expr MINUS expr
+    | expr MUL expr
+    | expr DIV expr
+    ;
+relop: LT | GT ;
 
-init:
-    ID ASSIGN NUM
-;
-
-cond:
-    ID LT NUM
-;
-
-incr_opt:
-    /* empty */
-  | incr
-;
-
-incr:
-    ID INC
-;
-
-statement_opt:
-    /* empty */
-  | statement
-;
-
-statement:
-    LBRACE RBRACE
-  | LBRACE statements RBRACE
-;
-
-statements:
-    statement
-  | statements statement
-;
 %%
 
 void yyerror(const char *s) {
-    fprintf(stderr, "Syntax error: %s\n", s);
+    printf("Error: %s\n", s);
 }
-
-int main(void) {
-    printf("Enter your for loop:\n");
-    return yyparse();
+int main() {
+    printf("Enter a FOR loop:\n");
+    yyparse();
+    return 0;
 }
-
-Ubuntu Commands to Execute:
-yacc -d forloop.y
-lex forloop.l
-gcc lex.yy.c y.tab.c -o forloop
-./forloop
-
-Sample Input (Valid):
-for(i = 0; i < 10; i++) { }
