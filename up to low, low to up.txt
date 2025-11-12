@@ -8,6 +8,6 @@
 . 	{printf("%c",yytext[0]);}
 %%
 
-int main(){
+int main() {
 yylex();
 }
