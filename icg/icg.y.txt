@@ -35,3 +35,7 @@ int yyerror(char *s) {   /* ← Fix: correct function signature */
     printf("Error: %s\n", s);
     return 0;
 }
+
+/Sample Input:
+//(a + b) * (c - d)
+//x + y * z
