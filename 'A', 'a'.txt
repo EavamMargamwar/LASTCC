@@ -19,10 +19,5 @@ int main() {
 
 int yywrap() { return 1; }
 
-Ubuntu Commands to Execute:
-lex prac3.l
-gcc lex.yy.c -o prac3
-./prac3
-
 Sample Input:
 Apple is an Amazing fruit and also a healthy choice.
