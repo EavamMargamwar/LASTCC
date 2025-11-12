@@ -1,34 +1,23 @@
-Lex Code — prac6.l
 %{
 #include <stdio.h>
-#include <string.h>
-
-int line = 1;
-char current[256];
+int line_num = 0;
+int found = 0;
 %}
 
 %%
-.*\n      {
-              strcpy(current, yytext);
-              current[strcspn(current, "\n")] = '\0';  // remove newline
-              if (strlen(current) >= 4 &&
-                  strcmp(current + strlen(current) - 4, ".com") == 0)
-                  printf("Line %d ends with '.com': %s\n", line, current);
-              line++;
-          }
-
-.         { /* ignore other chars */ }
+.*\.com$	{
+			found = 1;
+			printf("\n Line %d: %s\n", line_num,yytext);
+		}
+.*\n	{ line_num++; }
+.|\n	{ line_num++; }
 %%
 
 int main() {
-    printf("Enter lines of text (Ctrl+D to stop):\n");
-    yylex();
-    return 0;
+	printf("Enter text lines:\n");
+	yylex();
+	if (!found) {
+		printf("\n not found\n");
+	}
+	return 0;
 }
-
-int yywrap() { return 1; }
-
-// Ubuntu Commands to Execute:
-// lex prac6.l
-// gcc lex.yy.c -o prac6
-// ./prac6
