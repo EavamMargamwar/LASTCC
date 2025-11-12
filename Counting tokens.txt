@@ -19,12 +19,12 @@ int isKeyword(char *word) {
 %}
 
 %%
-"//".*                    { com++; ln++; }                 /* Single-line comment */
-"/*"([^*]|\*+[^*/])*\*+"/" { com++; }                      /* Multi-line comment */
-[ \t]+                    { sp++; }                        /* Space counter */
-\n                        { ln++; }                        /* Line counter */
-[a-zA-Z_][a-zA-Z0-9_]*    { if(isKeyword(yytext)) kw++; else wrd++; } /* Keywords/words */
-.                         ;                                /* Ignore other chars */
+"//".*                    { com++; ln++; }               
+"/*"([^*]|\*+[^*/])*\*+"/" { com++; }                      
+[ \t]+                    { sp++; }                       
+\n                        { ln++; }                        
+[a-zA-Z_][a-zA-Z0-9_]*    { if(isKeyword(yytext)) kw++; else wrd++; } 
+.                         ;                                
 %%
 
 int main() {
