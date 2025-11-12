@@ -9,3 +9,6 @@
 [ \t]      ;   
 .          ;
 %%
+int yywrap() {
+    return 1;
+}
